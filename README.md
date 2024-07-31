@@ -25,7 +25,7 @@ In the code folder, you can find the necessary code to run the test script calle
 A visual representation of the IMU motion has also been implemented using the pygame and PyOpenGL libraries. Consider that all code needed for this implementation is inside "utils.py"
 
 <p align="center" width="100%">
-    <img width="55%" src="images/opengl.png"> 
+    <img width="65%" src="images/opengl.png"> 
 </p>
 
 ## 📜 License
