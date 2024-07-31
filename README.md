@@ -11,9 +11,9 @@ The SEN-13284 from SparkFun was used to test this library, but it should work wi
 ## 🔧 Dependencies and Installation 
 * Python == 3.9.2
 * pigpio == 1.78.0
-* numpy==2.0.1
-* pygame==2.6.0
-* PyOpenGL==3.1.7
+* numpy == 2.0.1
+* pygame == 2.6.0
+* PyOpenGL == 3.1.7
 
 ## 🚀 Code
 The project was tested in a Raspberry Pi 4, using the I2C communication protocol.
