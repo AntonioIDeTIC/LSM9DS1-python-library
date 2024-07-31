@@ -5,7 +5,9 @@ This is a Python library that attempts to interface with the LSM9DS1 sensor. Spa
 The SEN-13284 from SparkFun was used to test this library, but it should work with other boards, such as the Adafruit 9-DOF Breakout Board based on the LSM9DS1 chip. It could be purchased at [Mouser](https://www.mouser.es/ProductDetail/Adafruit/4634?qs=W%2FMpXkg%252BdQ6zSzbuDAor%2FQ%3D%3D).
 
 <p align="center" width="100%">
-    <img width="45%" src="images/13284.png"> 
+    <img width="45%" src="images/13284.png" style="display: inline-block;">
+    <img width="45%" src="images/adafruit.png" style="display: inline-block;">
+
 </p>
 
 ## 🔧 Dependencies and Installation 
