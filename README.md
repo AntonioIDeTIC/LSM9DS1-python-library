@@ -20,6 +20,12 @@ The project was tested in a Raspberry Pi 4, using the I2C communication protocol
 
 In the code folder, you can find the necessary code to run the test script called "test_imu.py". Note that the required variables are imported from another file called "IMU_regs.py".
 
+A visual representation of the IMU motion has also been implemented using the pygame and PyOpenGL libraries. Consider that all code needed for this implementation is inside "utils.py"
+
+<p align="center" width="100%">
+    <img width="45%" src="images/opengl.png"> 
+</p>
+
 ## 📜 License
 This project is released under the MIT 2.0 license.
 
