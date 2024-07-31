@@ -18,6 +18,9 @@ class AHRSdisplay:
         
         self.screen_image = None
 
+        # Set background color to white
+        glClearColor(1.0, 1.0, 1.0, 1.0)
+
     def euler_to_rot_matrix(self, yaw, pitch, roll):
         yaw = np.radians(-yaw + 50)
         pitch = np.radians(-pitch)
@@ -65,6 +68,8 @@ class AHRSdisplay:
             (4, 5), (5, 7), (7, 6), (6, 4),
             (0, 4), (1, 5), (2, 6), (3, 7)
         ]
+        
+        glColor3f(0.0, 0.0, 0.0)  # Set drawing color to black
 
         glBegin(GL_LINES)
         for edge in edges:
@@ -79,12 +84,6 @@ class AHRSdisplay:
         glVertex3fv(vector)
         glEnd()
         glColor3fv([1, 1, 1])  # Reset to white
-
-    def draw_text(self, text, position):
-        text_surface = self.font.render(text, True, (255, 255, 255))  # White text
-        text_data = pygame.image.tostring(text_surface, "RGBA", True)
-        glWindowPos2d(position[0], position[1])
-        glDrawPixels(text_surface.get_width(), text_surface.get_height(), GL_RGBA, GL_UNSIGNED_BYTE, text_data)
 
     def draw_cone(self):
         quad = gluNewQuadric()
@@ -120,13 +119,6 @@ class AHRSdisplay:
 
         glPopMatrix()
 
-        # # Draw the text labels
-        # glPushMatrix()
-        # glLoadIdentity()
-        # self.draw_text(f"Yaw: {yaw:.2f}", (10, self.height - 30))
-        # self.draw_text(f"Pitch: {pitch:.2f}", (10, self.height - 70))
-        # self.draw_text(f"Roll: {roll:.2f}", (10, self.height - 110))
-        # glPopMatrix()
 
         # Capture the screen buffer
         buffer = glReadPixels(0, 0, self.width, self.height, GL_RGBA, GL_UNSIGNED_BYTE)
@@ -190,7 +182,7 @@ def draw_compass(resized_rgb, yaw, height, width, position, r):
     
     overlay = resized_rgb.copy()
     alpha = 0.6
-    cv2.rectangle(overlay, (top_left_x, top_left_y), (bottom_right_x, bottom_right_y), (0, 0, 0), cv2.FILLED)
+    cv2.rectangle(overlay, (top_left_x, top_left_y), (bottom_right_x, bottom_right_y), (255, 255, 255), cv2.FILLED)
     cv2.addWeighted(overlay, alpha, resized_rgb, 1 - alpha, 0, resized_rgb)
     
     directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
@@ -198,9 +190,9 @@ def draw_compass(resized_rgb, yaw, height, width, position, r):
         angle = np.radians(i * 45)
         dir_x = int(compass_center_x + compass_radius * np.sin(angle))
         dir_y = int(compass_center_y - compass_radius * np.cos(angle))
-        cv2.putText(resized_rgb, direction, (dir_x - 5, dir_y + 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 1)
+        cv2.putText(resized_rgb, direction, (dir_x - 5, dir_y + 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1)
     
     yaw_end_x = int(compass_center_x + compass_radius * np.sin(np.radians(yaw)))
     yaw_end_y = int(compass_center_y - compass_radius * np.cos(np.radians(yaw)))
-    cv2.line(resized_rgb, (compass_center_x, compass_center_y), (yaw_end_x, yaw_end_y), (255, 255, 0), 2)
+    cv2.line(resized_rgb, (compass_center_x, compass_center_y), (yaw_end_x, yaw_end_y), (0, 0, 0), 2)
     
